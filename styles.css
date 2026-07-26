@@ -128,27 +128,38 @@ body.cursor-hover .cursor-ring {
 .page-shell {
   position: relative;
   z-index: 1;
-  width: min(1180px, calc(100% - 32px));
+  width: 100%;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 22px 0 72px;
+  padding: 18px 16px 72px;
+  box-sizing: border-box;
 }
 
 /* Sticky Glassmorphism Header */
 .site-header {
   position: sticky;
-  top: 16px;
+  top: 12px;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding: 14px 24px;
+  padding: 12px 22px;
   border: 1px solid var(--line);
   border-radius: var(--radius-pill);
-  background: rgba(5, 7, 7, 0.76);
+  background: rgba(5, 7, 7, 0.88);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   box-shadow: var(--shadow);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .brand {
@@ -738,18 +749,24 @@ h1 span, h2 span {
   }
 
   .site-header {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     padding: 10px 14px;
     border-radius: var(--radius-lg);
-    top: 8px;
+    top: 6px;
     gap: 8px;
+    width: 100%;
+  }
+
+  .header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 
   .brand {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
   }
 
   .site-nav {
@@ -758,47 +775,51 @@ h1 span, h2 span {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 6px;
+    margin-top: 4px;
     padding-top: 8px;
     border-top: 1px solid var(--line);
     gap: 4px;
   }
 
   .site-nav a {
-    font-size: 0.8rem;
-    padding: 4px 6px;
+    font-size: 0.78rem;
+    padding: 3px 5px;
   }
 
   .nav-cta {
-    padding: 6px 14px;
-    font-size: 0.78rem;
+    padding: 6px 12px;
+    font-size: 0.76rem;
   }
 
   .hero, .section {
-    margin-top: 16px;
-    padding: 20px 14px;
+    margin-top: 14px;
+    padding: 18px 14px;
     border-radius: var(--radius-lg);
     width: 100%;
     max-width: 100%;
   }
 
   h1 {
-    font-size: clamp(1.8rem, 6.8vw, 2.6rem);
-    margin-bottom: 14px;
+    font-size: clamp(1.65rem, 6.5vw, 2.3rem);
+    margin-bottom: 12px;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .hero-subtext {
-    font-size: 0.94rem;
+    font-size: 0.92rem;
     line-height: 1.55;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+    word-break: break-word;
   }
 
   .section-header {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
   .section-header h2 {
-    font-size: 1.65rem;
+    font-size: 1.55rem;
+    word-break: break-word;
   }
 
   .button-group {
@@ -810,8 +831,8 @@ h1 span, h2 span {
   .btn-primary, .btn-secondary {
     width: 100%;
     justify-content: center;
-    padding: 12px 16px;
-    font-size: 0.9rem;
+    padding: 11px 16px;
+    font-size: 0.88rem;
   }
 
   .hero-mockup-frame {
@@ -822,18 +843,18 @@ h1 span, h2 span {
 
   .live-typing-box {
     padding: 12px;
-    font-size: 0.84rem;
-    min-height: 70px;
+    font-size: 0.82rem;
+    min-height: 64px;
   }
 
   .feature-card, .knowledge-card, .contact-form {
-    padding: 18px 14px;
+    padding: 16px 14px;
     width: 100%;
     max-width: 100%;
   }
 
   .modal-content {
-    padding: 20px 14px;
+    padding: 18px 14px;
   }
 }
 
@@ -843,19 +864,19 @@ h1 span, h2 span {
   }
 
   .brand {
-    font-size: 0.88rem;
+    font-size: 0.85rem;
   }
 
   .site-nav a {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
   }
 
   h1 {
-    font-size: 1.7rem;
+    font-size: 1.55rem;
   }
 
   .section-header h2 {
-    font-size: 1.45rem;
+    font-size: 1.35rem;
   }
 }
 
