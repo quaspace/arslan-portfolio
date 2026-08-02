@@ -1,4 +1,4 @@
-/* Revived Deep Glassmorphism Design System */
+/* Revived Deep Glassmorphism Design System - 60FPS Performance Engine */
 :root {
   --bg: #050707;
   --bg-soft: rgba(8, 14, 14, 0.86);
@@ -53,7 +53,7 @@ body {
   }
 }
 
-/* Custom Glowing Cursor System */
+/* Custom Glowing Cursor System - Hardware Accelerated */
 .cursor-dot,
 .cursor-ring {
   position: fixed;
@@ -111,6 +111,7 @@ body.cursor-hover .cursor-ring {
   pointer-events: none;
   z-index: 0;
   opacity: 0.82;
+  will-change: transform;
 }
 
 .grid-glow {
@@ -153,6 +154,7 @@ body.cursor-hover .cursor-ring {
   box-shadow: var(--shadow);
   width: 100%;
   box-sizing: border-box;
+  will-change: transform;
 }
 
 .header-main {
@@ -168,16 +170,45 @@ body.cursor-hover .cursor-ring {
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 1.05rem;
+  gap: 12px;
 }
 
-.brand-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 12px var(--accent);
+.brand-logo-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(102, 255, 209, 0.3);
+  background: rgba(8, 14, 16, 0.9);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 16px rgba(102, 255, 209, 0.25);
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.brand:hover .brand-logo-mark {
+  transform: rotate(15deg) scale(1.08);
+  border-color: var(--accent);
+  box-shadow: 0 0 24px rgba(102, 255, 209, 0.45);
+}
+
+.brand-text-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brand-name {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.brand-sub {
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.08em;
 }
 
 .site-nav {
@@ -332,7 +363,7 @@ h1 span, h2 span {
   scroll-margin-top: 100px;
 }
 
-/* Interactive App Frame Mockup with Radial Spotlight */
+/* Interactive App Frame Mockup */
 .hero-mockup-frame {
   position: relative;
   border-radius: var(--radius-lg);
@@ -406,34 +437,47 @@ h1 span, h2 span {
   min-height: 80px;
 }
 
-.live-wave-visualizer {
+/* Live Physics/AI Canvas Wrap */
+.hero-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 110px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: rgba(2, 6, 6, 0.75);
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  height: 38px;
-  padding: 8px;
-  background: rgba(102, 255, 209, 0.05);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--line);
 }
 
-.wave-bar {
-  width: 4px;
-  height: 60%;
-  background: var(--accent);
-  border-radius: 2px;
-  animation: wave 1.4s ease-in-out infinite alternate;
+.hero-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.wave-bar:nth-child(2) { animation-delay: 0.2s; height: 90%; background: var(--accent-strong); }
-.wave-bar:nth-child(3) { animation-delay: 0.4s; height: 45%; background: var(--violet); }
-.wave-bar:nth-child(4) { animation-delay: 0.1s; height: 100%; background: var(--accent); }
-.wave-bar:nth-child(5) { animation-delay: 0.5s; height: 75%; background: var(--accent-strong); }
+/* Kinetic Waveform Narrative Spine */
+.waveform-spine-wrap {
+  position: fixed;
+  left: 18px;
+  top: 15%;
+  bottom: 15%;
+  width: 30px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.7;
+}
 
-@keyframes wave {
-  0% { transform: scaleY(0.4); }
-  100% { transform: scaleY(1); }
+.waveform-spine-svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .waveform-spine-wrap {
+    display: none;
+  }
 }
 
 .mockup-pills {
@@ -457,7 +501,7 @@ h1 span, h2 span {
   background: var(--accent-soft);
 }
 
-/* Glassmorphism Section Card Shells */
+/* Glassmorphic Section Card Shells - Render Performance Optimized */
 .section {
   margin-top: 48px;
   padding: 48px;
@@ -468,6 +512,8 @@ h1 span, h2 span {
   -webkit-backdrop-filter: blur(14px);
   box-shadow: var(--shadow);
   scroll-margin-top: 100px;
+  content-visibility: auto;
+  contain-intrinsic-size: 400px;
 }
 
 .section-header {
@@ -497,6 +543,7 @@ h1 span, h2 span {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  will-change: transform;
 }
 
 .feature-card::before,
@@ -584,32 +631,6 @@ h1 span, h2 span {
   margin-bottom: 20px;
 }
 
-.card-widget {
-  padding: 16px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--line);
-  background: rgba(2, 6, 6, 0.65);
-  margin-bottom: 20px;
-}
-
-.widget-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.82rem;
-  color: var(--muted);
-  padding: 6px 0;
-}
-
-.widget-row:not(:last-child) {
-  border-bottom: 1px solid rgba(177, 238, 218, 0.1);
-}
-
-.widget-val {
-  font-weight: 700;
-  color: var(--accent);
-}
-
 /* Knowledge Matrix Grid */
 .knowledge-grid {
   display: grid;
@@ -622,31 +643,6 @@ h1 span, h2 span {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
-}
-
-.status-chip {
-  font-size: 0.76rem;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: var(--radius-pill);
-  background: var(--accent-soft);
-  color: var(--accent);
-  border: 1px solid rgba(102, 255, 209, 0.3);
-}
-
-.progress-track {
-  height: 6px;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-pill);
-  margin-bottom: 14px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  border-radius: var(--radius-pill);
-  background: linear-gradient(90deg, var(--accent), var(--accent-strong));
 }
 
 /* Contact Section & Form */
@@ -701,6 +697,101 @@ h1 span, h2 span {
 
 .form-status.is-success { color: var(--accent); font-weight: 600; }
 .form-status.is-error { color: #ff7b7b; font-weight: 600; }
+
+/* ChatGPT / Gemini Style Direct Email Card Component */
+.chatgpt-code-box {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: rgba(2, 6, 6, 0.85);
+  overflow: hidden;
+  margin-top: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.chatgpt-code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 14px;
+  background: rgba(14, 20, 21, 0.95);
+  border-bottom: 1px solid var(--line);
+}
+
+.code-lang {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.btn-copy-chatgpt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.btn-copy-chatgpt:hover,
+.btn-copy-chatgpt.copied {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: rgba(102, 255, 209, 0.3);
+}
+
+.chatgpt-code-body {
+  padding: 16px;
+  font-family: "Sora", monospace, sans-serif;
+  word-break: break-all;
+}
+
+.chatgpt-email-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.02rem;
+  transition: color 180ms ease;
+}
+
+.chatgpt-email-link:hover {
+  color: var(--accent-strong);
+}
+
+.toast-notification {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  z-index: 1000;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent);
+  background: rgba(8, 14, 16, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.88rem;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(102, 255, 209, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 280ms ease, transform 280ms ease;
+}
+
+.toast-notification.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
 
 /* Dialog Modal */
 .project-modal {
@@ -777,20 +868,74 @@ h1 span, h2 span {
   }
 }
 
+/* Native Mobile App Bottom Navigation Dock (App-Style Thumb Navigation) */
+.mobile-bottom-dock {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  .site-nav {
+    display: none !important;
+  }
+
+  .mobile-bottom-dock {
+    position: fixed;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--line);
+    background: rgba(8, 14, 16, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(102, 255, 209, 0.2);
+  }
+
+  .mobile-dock-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    transition: all 180ms ease;
+  }
+
+  .mobile-dock-item svg {
+    stroke: var(--muted);
+    transition: stroke 180ms ease;
+  }
+
+  .mobile-dock-item:hover,
+  .mobile-dock-item.active {
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .mobile-dock-item:hover svg,
+  .mobile-dock-item.active svg {
+    stroke: var(--accent);
+  }
+
   .page-shell {
     width: 100%;
     max-width: 100%;
-    padding: 8px 12px 60px;
+    padding: 8px 12px 90px;
   }
 
   .site-header {
-    flex-direction: column;
-    align-items: stretch;
     padding: 10px 14px;
     border-radius: var(--radius-lg);
     top: 6px;
-    gap: 8px;
     width: 100%;
   }
 
@@ -803,23 +948,6 @@ h1 span, h2 span {
 
   .brand {
     font-size: 0.92rem;
-  }
-
-  .site-nav {
-    order: 3;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 4px;
-    padding-top: 8px;
-    border-top: 1px solid var(--line);
-    gap: 4px;
-  }
-
-  .site-nav a {
-    font-size: 0.78rem;
-    padding: 3px 5px;
   }
 
   .nav-cta {
@@ -892,6 +1020,11 @@ h1 span, h2 span {
   .modal-content {
     padding: 18px 14px;
   }
+
+  .cosmos-canvas,
+  .hero-canvas-wrap {
+    display: none !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -901,10 +1034,6 @@ h1 span, h2 span {
 
   .brand {
     font-size: 0.85rem;
-  }
-
-  .site-nav a {
-    font-size: 0.72rem;
   }
 
   h1 {

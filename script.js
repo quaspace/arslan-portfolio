@@ -1,4 +1,4 @@
-/* Deep Glassmorphism Interactive Engine */
+/* Deep Glassmorphism Interactive Engine - 60FPS Performance Engine */
 const revealItems = document.querySelectorAll(".reveal");
 const canvas = document.querySelector("#cosmosCanvas");
 const context = canvas.getContext("2d");
@@ -24,11 +24,62 @@ let cursorX = -100;
 let cursorY = -100;
 let ringX = -100;
 let ringY = -100;
+let isPointerMoving = false;
 
 const colors = ["#66ffd1", "#f6c85f", "#d38cff", "#f1f7f3"];
 
-/* Custom Glowing Cursor & Radial Glow Spotlight */
-function drawCursor() {
+/* Minimalist Professional Haptic Micro-Tick Audio Engine */
+let audioCtx = null;
+
+function playMinimalTick(intensity = "soft") {
+  if (!audioCtx) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (AudioContext) audioCtx = new AudioContext();
+  }
+  if (audioCtx && audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
+  if (!audioCtx) return;
+
+  const now = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  if (intensity === "primary") {
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(160, now);
+    osc.frequency.exponentialRampToValueAtTime(80, now + 0.022);
+    gain.gain.setValueAtTime(0.02, now);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.025);
+    osc.start(now);
+    osc.stop(now + 0.025);
+  } else {
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(260, now);
+    osc.frequency.exponentialRampToValueAtTime(130, now + 0.014);
+    gain.gain.setValueAtTime(0.012, now);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.016);
+    osc.start(now);
+    osc.stop(now + 0.016);
+  }
+}
+
+document.addEventListener("click", (e) => {
+  const isPrimary = e.target.closest(".btn-primary, .nav-cta, #copyEmailBtn");
+  const isInteractive = e.target.closest("a, button, .modal-trigger-btn, .modal-close");
+
+  if (isPrimary) {
+    playMinimalTick("primary");
+  } else if (isInteractive) {
+    playMinimalTick("soft");
+  }
+});
+
+/* Custom Glowing Cursor - Smooth Throttled Animation */
+function updateCursor() {
   ringX += (cursorX - ringX) * 0.32;
   ringY += (cursorY - ringY) * 0.32;
 
@@ -36,26 +87,30 @@ function drawCursor() {
     cursorDot.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
     cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
   }
-
-  requestAnimationFrame(drawCursor);
 }
 
 window.addEventListener("pointermove", (event) => {
-  document.body.classList.add("cursor-ready");
   cursorX = event.clientX;
   cursorY = event.clientY;
   pointerX = (event.clientX / window.innerWidth - 0.5) * 2;
   pointerY = (event.clientY / window.innerHeight - 0.5) * 2;
 
-  const card = event.target.closest(".feature-card, .knowledge-card, .hero-mockup-frame, .contact-form, .project-modal");
-  if (card) {
-    const rect = card.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
-    card.style.setProperty("--glow-x", `${x}%`);
-    card.style.setProperty("--glow-y", `${y}%`);
+  if (!isPointerMoving) {
+    isPointerMoving = true;
+    requestAnimationFrame(() => {
+      document.body.classList.add("cursor-ready");
+      const card = event.target.closest(".feature-card, .knowledge-card, .hero-mockup-frame, .contact-form, .project-modal");
+      if (card) {
+        const rect = card.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty("--glow-x", `${x}%`);
+        card.style.setProperty("--glow-y", `${y}%`);
+      }
+      isPointerMoving = false;
+    });
   }
-});
+}, { passive: true });
 
 document.addEventListener("pointerover", (event) => {
   if (event.target.closest("a, button, input, textarea, .feature-card, .knowledge-card, .modal-trigger-btn")) {
@@ -179,6 +234,50 @@ projectModal?.addEventListener("click", (event) => {
   }
 });
 
+/* ChatGPT / Gemini Style Copy Email Handler */
+const copyEmailBtn = document.querySelector("#copyEmailBtn");
+const copyBtnText = document.querySelector("#copyBtnText");
+const copyToast = document.querySelector("#copyToast");
+
+copyEmailBtn?.addEventListener("click", () => {
+  const email = "quaspace.official@gmail.com";
+  
+  const handleCopied = () => {
+    if (copyBtnText) copyBtnText.textContent = "✓ Copied!";
+    if (copyEmailBtn) copyEmailBtn.classList.add("copied");
+
+    if (copyToast) {
+      copyToast.classList.add("show");
+      setTimeout(() => copyToast.classList.remove("show"), 2400);
+    }
+
+    setTimeout(() => {
+      if (copyBtnText) copyBtnText.textContent = "Copy Email";
+      if (copyEmailBtn) copyEmailBtn.classList.remove("copied");
+    }, 2200);
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(email).then(handleCopied).catch(() => {
+      const ta = document.createElement("textarea");
+      ta.value = email;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      handleCopied();
+    });
+  } else {
+    const ta = document.createElement("textarea");
+    ta.value = email;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+    handleCopied();
+  }
+});
+
 /* Direct FormSubmit AJAX Handler */
 if (contactForm) {
   contactForm.addEventListener("submit", async (event) => {
@@ -245,9 +344,9 @@ if (contactForm) {
   });
 }
 
-/* Cosmic Canvas Orbit Particle Animation */
+/* Cosmic Canvas Particle Animation - Optimized 25 Nodes */
 function resizeCanvas() {
-  const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+  const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
   width = window.innerWidth;
   height = window.innerHeight;
   canvas.width = Math.floor(width * pixelRatio);
@@ -256,26 +355,106 @@ function resizeCanvas() {
   canvas.style.height = `${height}px`;
   context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-  const total = Math.min(80, Math.max(40, Math.floor(width / 16)));
+  const total = 25;
   particles = Array.from({ length: total }, (_, index) => ({
     angle: (index / total) * Math.PI * 2,
-    orbit: 60 + Math.random() * Math.min(width, height) * 0.46,
-    radius: 1 + Math.random() * 2.5,
-    speed: 0.001 + Math.random() * 0.0025,
-    depth: 0.28 + Math.random() * 0.9,
+    orbit: 50 + Math.random() * Math.min(width, height) * 0.4,
+    radius: 1 + Math.random() * 2,
+    speed: 0.001 + Math.random() * 0.002,
+    depth: 0.3 + Math.random() * 0.7,
     color: colors[index % colors.length],
   }));
 }
 
-function drawCosmos(time) {
-  context.clearRect(0, 0, width, height);
+/* Live Physics/AI Hero Canvas Animation */
+const heroCanvas = document.querySelector("#heroCanvas");
+let hCtx = null;
+let nodes = [];
+let hMouseX = -1000;
+let hMouseY = -1000;
 
-  const centerX = width * 0.58 + pointerX * 18;
-  const centerY = height * 0.43 + pointerY * 14;
+if (heroCanvas) {
+  hCtx = heroCanvas.getContext("2d");
+  nodes = Array.from({ length: 8 }, (_, i) => ({
+    x: 25 + (i % 4) * 85 + Math.random() * 15,
+    y: 20 + Math.floor(i / 4) * 35 + Math.random() * 10,
+    vx: (Math.random() - 0.5) * 0.5,
+    vy: (Math.random() - 0.5) * 0.5,
+    radius: 2.5 + Math.random() * 1.5,
+    color: i % 3 === 0 ? "#66ffd1" : i % 3 === 1 ? "#f6c85f" : "#d38cff",
+  }));
+
+  heroCanvas.addEventListener("mousemove", (e) => {
+    const rect = heroCanvas.getBoundingClientRect();
+    hMouseX = e.clientX - rect.left;
+    hMouseY = e.clientY - rect.top;
+  }, { passive: true });
+
+  heroCanvas.addEventListener("mouseleave", () => {
+    hMouseX = -1000;
+    hMouseY = -1000;
+  }, { passive: true });
+}
+
+function drawHeroCanvas() {
+  if (!hCtx || !heroCanvas) return;
+  hCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const dx = nodes[i].x - nodes[j].x;
+      const dy = nodes[i].y - nodes[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 90) {
+        hCtx.beginPath();
+        hCtx.strokeStyle = "rgba(102, 255, 209, " + (0.22 - dist / 400) + ")";
+        hCtx.lineWidth = 1;
+        hCtx.moveTo(nodes[i].x, nodes[i].y);
+        hCtx.lineTo(nodes[j].x, nodes[j].y);
+        hCtx.stroke();
+      }
+    }
+  }
+
+  nodes.forEach((n) => {
+    n.x += n.vx;
+    n.y += n.vy;
+
+    if (n.x < 10 || n.x > heroCanvas.width - 10) n.vx *= -1;
+    if (n.y < 10 || n.y > heroCanvas.height - 10) n.vy *= -1;
+
+    const mdx = hMouseX - n.x;
+    const mdy = hMouseY - n.y;
+    const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+    if (mDist < 60) {
+      n.x += (mdx / mDist) * 0.6;
+      n.y += (mdy / mDist) * 0.6;
+    }
+
+    hCtx.beginPath();
+    hCtx.fillStyle = n.color;
+    hCtx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+    hCtx.fill();
+  });
+}
+
+/* Master 60FPS Single Animation Loop */
+function masterLoop(time) {
+  if (document.hidden) {
+    requestAnimationFrame(masterLoop);
+    return;
+  }
+
+  updateCursor();
+
+  // Cosmos background render
+  context.clearRect(0, 0, width, height);
+  const centerX = width * 0.58 + pointerX * 14;
+  const centerY = height * 0.43 + pointerY * 10;
 
   context.save();
   context.translate(centerX, centerY);
-  context.rotate(time * 0.00008);
+  context.rotate(time * 0.00006);
 
   particles.forEach((particle, index) => {
     const angle = particle.angle + time * particle.speed;
@@ -285,31 +464,58 @@ function drawCosmos(time) {
 
     context.beginPath();
     context.fillStyle = particle.color;
-    context.globalAlpha = 0.26 + particle.depth * 0.42;
+    context.globalAlpha = 0.22 + particle.depth * 0.35;
     context.arc(x, y, particle.radius * scale, 0, Math.PI * 2);
     context.fill();
-
-    if (index % 3 === 0) {
-      context.beginPath();
-      context.strokeStyle = particle.color;
-      context.globalAlpha = 0.08;
-      context.ellipse(0, 0, particle.orbit, particle.orbit * particle.depth, 0, 0, Math.PI * 2);
-      context.stroke();
-    }
   });
-
-  context.globalAlpha = 0.45;
-  context.strokeStyle = "#66ffd1";
-  context.lineWidth = 1;
-  context.beginPath();
-  context.arc(0, 0, 34 + Math.sin(time * 0.001) * 6, 0, Math.PI * 2);
-  context.stroke();
   context.restore();
 
-  requestAnimationFrame(drawCosmos);
+  drawHeroCanvas();
+
+  requestAnimationFrame(masterLoop);
 }
 
-window.addEventListener("resize", resizeCanvas);
-requestAnimationFrame(drawCursor);
+/* Kinetic Waveform Narrative Spine Scroll Tracking */
+const spineActivePath = document.querySelector("#spineActivePath");
+if (spineActivePath) {
+  const pathLength = spineActivePath.getTotalLength();
+  spineActivePath.style.strokeDasharray = pathLength;
+  spineActivePath.style.strokeDashoffset = pathLength;
+
+  function updateSpineScroll() {
+    const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    const drawLength = pathLength * Math.min(1, Math.max(0, scrollPercent));
+    spineActivePath.style.strokeDashoffset = pathLength - drawLength;
+  }
+
+  window.addEventListener("scroll", updateSpineScroll, { passive: true });
+  updateSpineScroll();
+}
+
+window.addEventListener("resize", resizeCanvas, { passive: true });
 resizeCanvas();
-requestAnimationFrame(drawCosmos);
+requestAnimationFrame(masterLoop);
+
+/* Mobile Bottom Dock Active Section Observer */
+const mobileDockItems = document.querySelectorAll(".mobile-dock-item");
+const sections = document.querySelectorAll("section[id]");
+
+if (mobileDockItems.length > 0 && sections.length > 0) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute("id");
+        mobileDockItems.forEach((item) => {
+          const href = item.getAttribute("href");
+          if (href === `#${id}`) {
+            item.classList.add("active");
+          } else {
+            item.classList.remove("active");
+          }
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach((sec) => sectionObserver.observe(sec));
+}

@@ -11,11 +11,11 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Arsalan Riyaz | Founder @ Quaspace">
   <meta name="twitter:description" content="Building software tools and visualizers at the intersection of AI, medicine, and physics.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2366ffd1'><circle cx='12' cy='12' r='10'/></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><ellipse cx='12' cy='12' rx='9' ry='3.8' stroke='%2366ffd1' stroke-width='2' transform='rotate(-30 12 12)'/><ellipse cx='12' cy='12' rx='9' ry='3.8' stroke='%23f6c85f' stroke-width='2' transform='rotate(30 12 12)'/><circle cx='12' cy='12' r='3' fill='%2366ffd1'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=16">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -40,9 +40,26 @@
     <!-- Sticky Floating Glass Header -->
     <header class="site-header">
       <div class="header-main">
-        <a class="brand" href="#top">
-          <span class="brand-dot"></span>
-          Arsalan Riyaz
+        <a class="brand" href="#top" aria-label="Arsalan Riyaz Home">
+          <div class="brand-logo-mark">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#66ffd1"/>
+                  <stop offset="50%" stop-color="#f6c85f"/>
+                  <stop offset="100%" stop-color="#d38cff"/>
+                </linearGradient>
+              </defs>
+              <ellipse cx="12" cy="12" rx="9" ry="3.8" stroke="url(#brandGrad)" stroke-width="1.8" transform="rotate(-30 12 12)"/>
+              <ellipse cx="12" cy="12" rx="9" ry="3.8" stroke="url(#brandGrad)" stroke-width="1.8" transform="rotate(30 12 12)"/>
+              <circle cx="12" cy="12" r="3" fill="url(#brandGrad)"/>
+              <circle cx="12" cy="12" r="1.2" fill="#ffffff"/>
+            </svg>
+          </div>
+          <div class="brand-text-wrap">
+            <span class="brand-name">Arsalan Riyaz</span>
+            <span class="brand-sub">FOUNDER @ QUASPACE</span>
+          </div>
         </a>
         <a class="nav-cta" href="#quaspace">Explore Quaspace</a>
       </div>
@@ -59,22 +76,22 @@
       <section class="hero reveal" id="about">
         <div class="hero-left">
           <div class="eyebrow-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            Quaspace Innovation Observatory
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"/></svg>
+            Pre-Med & Physics Visualizers
           </div>
           <h1>
-            Architecting science, AI, and medicine into one <span>fluid system</span>.
+            Building visualizers for <span>pre-med, AI & physics</span>.
           </h1>
           <p class="hero-subtext">
-            Arsalan Riyaz — Class 10 student, researcher, and founder of Quaspace. Building software tools and pre-med learning visualizers at the intersection of AI and physics.
+            Arsalan Riyaz — Class 10 student and founder of Quaspace. Designing software tools and visualizers to make organic chemistry, biology, and quantum physics intuitive.
           </p>
           <div class="button-group">
-            <a class="btn-primary" href="#quaspace">Explore Quaspace Initiative &rarr;</a>
-            <a class="btn-secondary" href="#knowledge">Knowledge Map</a>
+            <a class="btn-primary" href="#quaspace">Explore Projects &rarr;</a>
+            <a class="btn-secondary" href="#knowledge">Study Topics</a>
           </div>
         </div>
 
-        <!-- Floating Wispr-Flow Style Interactive UI Mockup Frame -->
+        <!-- Floating Interactive UI Mockup Frame with Live Physics/AI Canvas -->
         <div class="hero-mockup-frame">
           <div class="mockup-header">
             <div class="window-dots">
@@ -84,40 +101,50 @@
             </div>
             <div class="mockup-status-badge">
               <span class="pulse-dot"></span>
-              Quaspace Core: Active
+              Live Physics & AI Model
             </div>
           </div>
           <div class="mockup-body">
-            <div class="live-typing-box" id="typingBox" data-text="Synthesizing pre-medical biology, AI neural models, and quantum physics visualizers...">
-              Synthesizing pre-medical biology, AI neural models, and quantum physics visualizers...
+            <div class="live-typing-box" id="typingBox" data-text="Interactive physics wave mechanics & pre-med neural node flow...">
+              Interactive physics wave mechanics & pre-med neural node flow...
             </div>
 
-            <!-- Signal Wave Visualizer -->
-            <div class="live-wave-visualizer" aria-label="Signal wave">
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
+            <!-- Live Physics/AI Interactive Canvas -->
+            <div class="hero-canvas-wrap">
+              <canvas id="heroCanvas" class="hero-canvas" width="340" height="110"></canvas>
             </div>
 
             <div class="mockup-pills">
-              <span class="pill-item active">Neural Logic</span>
-              <span class="pill-item active">Pre-Med Science</span>
-              <span class="pill-item">Quantum Engine</span>
-              <span class="pill-item">Ethics Layer</span>
+              <span class="pill-item active">Organic Chemistry</span>
+              <span class="pill-item active">Pre-Med Biology</span>
+              <span class="pill-item">Quantum Physics</span>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- Kinetic Waveform Narrative Spine -->
+      <div class="waveform-spine-wrap" aria-hidden="true">
+        <svg class="waveform-spine-svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
+          <path id="spinePath" d="M50 0 Q80 200 20 400 T80 800" stroke="rgba(102, 255, 209, 0.25)" stroke-width="2" fill="none" stroke-dasharray="6 4"/>
+          <path id="spineActivePath" d="M50 0 Q80 200 20 400 T80 800" stroke="url(#spineGrad)" stroke-width="3" fill="none"/>
+          <defs>
+            <linearGradient id="spineGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#66ffd1"/>
+              <stop offset="50%" stop-color="#f6c85f"/>
+              <stop offset="100%" stop-color="#d38cff"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
       <!-- Glassmorphic Quaspace Showcase Section -->
       <section class="section reveal" id="quaspace">
         <div class="section-header">
           <div class="eyebrow-badge">
-            <span>✦</span> Quaspace Architecture
+            <span>✦</span> Quaspace Projects
           </div>
-          <h2>Designed for precision in <span>science and learning</span></h2>
+          <h2>Interactive tools for <span>science & pre-med</span></h2>
         </div>
 
         <!-- 3-Column Glassmorphic Feature Cards Grid -->
@@ -128,8 +155,8 @@
               <div class="card-icon-wrap">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
               </div>
-              <h3>Machine Intelligence Engine</h3>
-              <p>Exploring computational tools and machine learning algorithms for pre-med study tools and medical diagnostic logic.</p>
+              <h3>AI & Study Logic</h3>
+              <p>Exploring machine learning algorithms and software logic to build interactive pre-med learning tools and diagnostic decision trees.</p>
               
               <!-- Custom Illustration: AI Neural Network -->
               <div class="card-illustration">
@@ -153,17 +180,6 @@
                   <circle cx="280" cy="70" r="7" fill="#66ffd1" class="pulse-node"/>
                 </svg>
               </div>
-
-              <div class="card-widget">
-                <div class="widget-row">
-                  <span>Logic Model</span>
-                  <span class="widget-val">Neural Net v1</span>
-                </div>
-                <div class="widget-row">
-                  <span>Curriculum Fit</span>
-                  <span class="widget-val">Pre-Med & AI</span>
-                </div>
-              </div>
             </div>
 
             <button class="btn-secondary modal-trigger-btn" type="button" data-modal="quaspace">Read Overview &rarr;</button>
@@ -175,8 +191,8 @@
               <div class="card-icon-wrap" style="color:var(--accent-strong);background:rgba(246,200,95,0.1);border-color:rgba(246,200,95,0.25);">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
               </div>
-              <h3>Medical Sciences & Pre-Med</h3>
-              <p>Cellular biology, human physiology, and organic chemistry retention visualizers designed for pre-medical mastery.</p>
+              <h3>Organic Chemistry & Biology</h3>
+              <p>Cellular biology, human physiology, and organic chemistry reaction mechanisms designed for pre-medical mastery and Olympiad retention.</p>
 
               <!-- Custom Illustration: Pre-Med DNA Helix & Physiology -->
               <div class="card-illustration">
@@ -199,17 +215,6 @@
                   <circle cx="140" cy="95" r="4" fill="#f6c85f"/>
                 </svg>
               </div>
-
-              <div class="card-widget">
-                <div class="widget-row">
-                  <span>Biology Module</span>
-                  <span class="widget-val" style="color:var(--accent-strong);">Physiology</span>
-                </div>
-                <div class="widget-row">
-                  <span>Chemistry</span>
-                  <span class="widget-val" style="color:var(--accent-strong);">Reaction Logic</span>
-                </div>
-              </div>
             </div>
 
             <button class="btn-secondary modal-trigger-btn" type="button" data-modal="research">Research Notes &rarr;</button>
@@ -221,8 +226,8 @@
               <div class="card-icon-wrap" style="color:var(--violet);background:rgba(211,140,255,0.1);border-color:rgba(211,140,255,0.25);">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
               </div>
-              <h3>Quantum & Space Visualizers</h3>
-              <p>Clean web-based visualizers to help students grasp quantum mechanics, wave-particle duality, and orbital physics.</p>
+              <h3>Quantum Physics & Wave Motion</h3>
+              <p>Web-based visualizers to help students grasp quantum mechanics, wave-particle duality, and atomic orbital probability density.</p>
 
               <!-- Custom Illustration: Quantum Atomic Orbitals -->
               <div class="card-illustration">
@@ -242,17 +247,6 @@
                   <circle cx="110" cy="98" r="3.5" fill="#f6c85f"/>
                 </svg>
               </div>
-
-              <div class="card-widget">
-                <div class="widget-row">
-                  <span>Simulation</span>
-                  <span class="widget-val" style="color:var(--violet);">Wave Duality</span>
-                </div>
-                <div class="widget-row">
-                  <span>Orbit Mechanics</span>
-                  <span class="widget-val" style="color:var(--violet);">Active</span>
-                </div>
-              </div>
             </div>
 
             <button class="btn-secondary modal-trigger-btn" type="button" data-modal="quaspace">Read Roadmap &rarr;</button>
@@ -264,54 +258,38 @@
       <section class="section reveal" id="knowledge">
         <div class="section-header">
           <div class="eyebrow-badge">
-            <span>✦</span> Knowledge Matrix
+            <span>✦</span> Study & Focus Areas
           </div>
-          <h2>Areas of study and <span>active exploration</span></h2>
+          <h2>Topics of active <span>study & research</span></h2>
         </div>
 
         <div class="knowledge-grid">
           <article class="knowledge-card">
             <div class="knowledge-head">
               <h3>Organic Chemistry</h3>
-              <span class="status-chip">Active Study</span>
             </div>
-            <div class="progress-track">
-              <div class="progress-fill" style="width: 80%;"></div>
-            </div>
-            <p>Structure, reaction pathways, stereochemistry, and molecular retention logic.</p>
+            <p>Structure, reaction pathways, stereochemistry, curved-arrow mechanisms, and molecular retention logic.</p>
           </article>
 
           <article class="knowledge-card">
             <div class="knowledge-head">
               <h3>Quantum Mechanics</h3>
-              <span class="status-chip">Exploration</span>
             </div>
-            <div class="progress-track">
-              <div class="progress-fill" style="width: 65%;"></div>
-            </div>
-            <p>Wave-particle duality, probability density functions, and physical computing models.</p>
+            <p>Wave-particle duality, probability density functions, and orbital physics simulations.</p>
           </article>
 
           <article class="knowledge-card">
             <div class="knowledge-head">
-              <h3>Medical Science</h3>
-              <span class="status-chip">Pre-Med Focus</span>
+              <h3>Pre-Med Biology</h3>
             </div>
-            <div class="progress-track">
-              <div class="progress-fill" style="width: 75%;"></div>
-            </div>
-            <p>Cellular biology, diagnostic logic, human physiology, and science Olympiads.</p>
+            <p>Cellular biology, human physiology, medical problem-solving, and science Olympiad preparation.</p>
           </article>
 
           <article class="knowledge-card">
             <div class="knowledge-head">
               <h3>Ethics & Service</h3>
-              <span class="status-chip">Core Values</span>
             </div>
-            <div class="progress-track">
-              <div class="progress-fill" style="width: 85%;"></div>
-            </div>
-            <p>Ethics, service (khidmat), dignity, and responsible technology design.</p>
+            <p>Ethics, service (khidmat), human dignity, and responsible technology design.</p>
           </article>
         </div>
       </section>
@@ -327,12 +305,22 @@
 
         <div class="contact-panel">
           <div>
-            <p style="color:var(--muted);font-size:1.05rem;line-height:1.7;margin-bottom:24px;">
+            <p style="color:var(--muted);font-size:1.05rem;line-height:1.7;margin-bottom:20px;">
               For academic discussions, Quaspace collaboration, research notes, or mentorship opportunities, send a message directly.
             </p>
-            <p style="color:var(--text);font-weight:600;">
-              Direct Email: <a href="mailto:quaspace.official@gmail.com" style="color:var(--accent);text-decoration:none;">quaspace.official@gmail.com</a>
-            </p>
+
+            <div class="chatgpt-code-box">
+              <div class="chatgpt-code-header">
+                <span class="code-lang">direct email</span>
+                <button type="button" class="btn-copy-chatgpt" id="copyEmailBtn" aria-label="Copy email address">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <span id="copyBtnText">Copy Email</span>
+                </button>
+              </div>
+              <div class="chatgpt-code-body">
+                <a href="mailto:quaspace.official@gmail.com" class="chatgpt-email-link">quaspace.official@gmail.com</a>
+              </div>
+            </div>
           </div>
 
           <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/quaspace.official@gmail.com" method="POST">
@@ -360,7 +348,7 @@
     </main>
   </div>
 
-  <!-- Glassmorphism Dialog Modal -->
+  <!-- Glassmorphism Dialog Modal for Projects -->
   <dialog id="projectModal" class="project-modal">
     <div class="modal-content">
       <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Close dialog">&times;</button>
@@ -371,6 +359,26 @@
       <div class="modal-body" id="modalBody"></div>
     </div>
   </dialog>
+
+  <!-- Native Mobile App Bottom Navigation Dock (Thumb-Height Navigation) -->
+  <nav class="mobile-bottom-dock" aria-label="Mobile Navigation">
+    <a href="#about" class="mobile-dock-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>About</span>
+    </a>
+    <a href="#quaspace" class="mobile-dock-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      <span>Projects</span>
+    </a>
+    <a href="#knowledge" class="mobile-dock-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <span>Study</span>
+    </a>
+    <a href="#contact" class="mobile-dock-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span>Contact</span>
+    </a>
+  </nav>
 
   <script src="script.js"></script>
 </body>
